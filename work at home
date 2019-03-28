@@ -1,0 +1,63 @@
+display.setDefault( "background", 0, 20, 1 )
+
+local calTextField = display.newText( "calculate", display.contentCenterX, display.contentCenterY - 200, native.systemFont, 25)
+calTextField.id = "cal textField"
+calTextField:setFillColor( 1, 1, 1 )
+
+local top1TextField = display.newText( "Topping 1 ", display.contentCenterX + 70, display.contentCenterY - 80, native.systemFont, 25)
+top1TextField.id = "top1 textField"
+top1TextField:setFillColor( 1, 1, 1 )
+
+local top2TextField = display.newText( "Topping 2 ", display.contentCenterX - 70, display.contentCenterY - 80, native.systemFont, 25)
+top2TextField.id = "top2 textField"
+top2TextField:setFillColor( 1, 1, 1 )
+
+local top3TextField = display.newText( "Topping 3 ", display.contentCenterX - 70, display.contentCenterY - 10, native.systemFont, 25)
+top3TextField.id = "top3 textField"
+top3TextField:setFillColor( 1, 1, 1 )
+
+local top4TextField = display.newText( "Topping 4 ", display.contentCenterX + 70, display.contentCenterY - 10, native.systemFont, 25)
+top4TextField.id = "top4 textField"
+top4TextField:setFillColor( 1, 1, 1 )
+ 
+local function roundToFirstDecimal(t)
+    return math.round(t*10)*0.1
+end
+display.setDefault( "background",0, 255, 204)
+ 
+local diameterTextField = native.newTextField( display.contentCenterX, display.contentCenterY + 140, 300, 40 )
+diameterTextField.id = "diameter textField"
+
+local circumferenceTextField = display.newText( "circumference", display.contentCenterX, display.contentCenterY - 120, native.systemFont, 25 )
+circumferenceTextField.id = "circumference textField"
+circumferenceTextField:setFillColor( 1, 1, 1 )
+
+local areaTextField = display.newText( "area", display.contentCenterX, display.contentCenterY - 200, native.systemFont, 25)
+areaTextField.id = "area textField"
+areaTextField:setFillColor( 1, 1, 1 )
+
+local calculateButton = display.newImageRect( "Button.png", 406, 157 )
+calculateButton.x = display.contentCenterX
+calculateButton.y = display.contentCenterY
+calculateButton.id = "calculate Button"
+
+local function calculateButtonTouch( event )
+ 
+    local pi
+    local diameter
+    local area
+    local circumference  
+  
+     pi = math.pi
+     diameter = diameterTextField.text
+     radius = diameter /2
+     area = pi * radius ^ 2 
+     circumference = 2 * pi * radius
+    -- print( areaOfSquare )
+    areaTextField.text = "The area is = " .. area
+    circumferenceTextField.text = "circumference is = " .. circumference
+    return true
+end
+
+calculateButton:addEventListener( "touch", calculateButtonTouch )
+    
